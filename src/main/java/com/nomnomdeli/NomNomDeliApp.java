@@ -1,6 +1,6 @@
 package com.nomnomdeli;
 
-public class Main {
+public class NomNomDeliApp {
     public static void main(String[] args) {
 
     }
