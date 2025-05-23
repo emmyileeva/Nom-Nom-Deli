@@ -30,6 +30,7 @@ public class Drink {
         }
     }
 
+    // Override the toString method to provide a string representation of the Drink object
     @Override
     public String toString() {
         return size + " " + flavor + " - $" + String.format("%.2f", getPrice());

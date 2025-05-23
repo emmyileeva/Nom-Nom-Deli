@@ -16,6 +16,7 @@ public class Chip {
         return PRICE;
     }
 
+    // Override the toString method to provide a string representation of the Chip object
     @Override
     public String toString() {
         return type + " Chips - $" + String.format("%.2f", PRICE);
