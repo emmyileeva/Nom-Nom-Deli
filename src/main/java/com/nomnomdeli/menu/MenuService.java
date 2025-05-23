@@ -1,5 +1,10 @@
 package com.nomnomdeli.menu;
 
+
+import com.nomnomdeli.model.Order;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class MenuService {
@@ -15,8 +20,16 @@ public class MenuService {
         boolean continueRunning = homeMenu.showHomeMenu();
 
         while (continueRunning) {
-            // here is where I will show OrderMenu and handle new order flow
-            continueRunning = false; // For now, exit after one iteration
+            // Generate a unique order ID based on the current date and time
+            String orderId = "ORDER-" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+
+            // Create a new order with the generated order ID and launch the order menu
+            Order currentOrder = new Order(orderId);
+            OrderMenu orderMenu = new OrderMenu(scanner, currentOrder);
+            boolean orderDone = orderMenu.showOrderMenu();
+
+            // After checkout or cancel, show home menu again
+            continueRunning = homeMenu.showHomeMenu();
         }
         scanner.close();
     }
