@@ -52,11 +52,11 @@ public class DrinkMenu {
         try {
             flavorIndex = Integer.parseInt(flavorInput) - 1;
             if (flavorIndex < 0 || flavorIndex >= flavors.length) {
-                System.out.println("Invalid option. Please try again.");
+                System.out.println("Invalid option. Please try again."); // Restart the process if input is invalid
                 return buildDrink();
             }
         } catch (Exception e) {
-            System.out.println("Invalid input. Please enter a number.");
+            System.out.println("Invalid input. Please enter a number."); // Restart the process if input is not a number
             return buildDrink();
         }
         String flavor = flavors[flavorIndex];
