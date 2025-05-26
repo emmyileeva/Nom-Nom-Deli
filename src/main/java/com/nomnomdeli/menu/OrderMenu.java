@@ -1,5 +1,6 @@
 package com.nomnomdeli.menu;
 
+import com.nomnomdeli.model.Drink;
 import com.nomnomdeli.model.Order;
 import com.nomnomdeli.model.Sandwich;
 
@@ -38,7 +39,10 @@ public class OrderMenu {
                     System.out.println("Sandwich added to your order!");
                     break;
                 case "2":
-                    // Add drink logic
+                    DrinkMenu drinkMenu = new DrinkMenu(scanner);
+                    Drink drink = drinkMenu.buildDrink();
+                    currentOrder.addDrink(drink);
+                    System.out.println("Drink added to your order!");
                     break;
                 case "3":
                     // Add chips logic
