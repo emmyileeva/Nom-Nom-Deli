@@ -1,6 +1,7 @@
 package com.nomnomdeli.menu;
 
 import com.nomnomdeli.model.Order;
+import com.nomnomdeli.model.Sandwich;
 
 import java.util.Scanner;
 
@@ -31,7 +32,10 @@ public class OrderMenu {
 
             switch (input) {
                 case "1":
-                    // Add sandwich logic
+                    SandwichMenu sandwichMenu = new SandwichMenu(scanner);
+                    Sandwich sandwich = sandwichMenu.buildSandwich();
+                    currentOrder.addSandwich(sandwich);
+                    System.out.println("Sandwich added to your order!");
                     break;
                 case "2":
                     // Add drink logic
