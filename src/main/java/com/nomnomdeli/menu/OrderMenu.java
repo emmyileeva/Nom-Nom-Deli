@@ -4,6 +4,7 @@ import com.nomnomdeli.model.Chip;
 import com.nomnomdeli.model.Drink;
 import com.nomnomdeli.model.Order;
 import com.nomnomdeli.model.Sandwich;
+import com.nomnomdeli.service.ReceiptWriter;
 
 import java.util.Scanner;
 
@@ -60,6 +61,7 @@ public class OrderMenu {
                     boolean confirmed = checkoutMenu.showCheckoutMenu(currentOrder);
 
                     if (confirmed) {
+                        ReceiptWriter.saveReceipt(currentOrder);
                         System.out.println("Thank you for your order! Your receipt has been saved.");
                         return true;
                     } else {

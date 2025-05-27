@@ -2,6 +2,7 @@ package com.nomnomdeli.service;
 
 import com.nomnomdeli.model.Order;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
@@ -9,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 public class ReceiptWriter {
     public static void saveReceipt(Order order) {
         String timestamp = order.getOrderTime().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"));
-        String receiptFileName = "receipt-" + timestamp + ".txt";
+        String receiptFileName = "receipts/" + timestamp + ".txt";
 
         try (FileWriter writer = new FileWriter(receiptFileName)) {
             writer.write(order.toString());
