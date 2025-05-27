@@ -27,7 +27,8 @@ public class OrderMenu {
             System.out.println("1) Add a sandwich");
             System.out.println("2) Add a drink");
             System.out.println("3) Add chips");
-            System.out.println("4) Checkout");
+            System.out.println("4) View current order");
+            System.out.println("5) Checkout");
             System.out.println("0) Cancel Order");
             System.out.print("Please select an option: ");
 
@@ -53,6 +54,10 @@ public class OrderMenu {
                     System.out.println("Chips added to your order!");
                     break;
                 case "4":
+                    ViewOrderMenu viewOrderMenu = new ViewOrderMenu(scanner);
+                    viewOrderMenu.viewCurrentOrder(currentOrder);
+                    break;
+                case "5":
                     if (currentOrder.isEmpty()) {
                         System.out.println("Your order is empty. Please add items before checking out.");
                         break;
