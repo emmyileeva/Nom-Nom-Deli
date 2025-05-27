@@ -57,6 +57,30 @@ public class Order {
         return chips;
     }
 
+    public void listSandwiches() {
+        if (sandwiches.isEmpty()) {
+            System.out.println("No sandwiches in this order.");
+        } else {
+            for (int i = 0; i < sandwiches.size(); i++) {
+                System.out.println((i + 1) + ") " + sandwiches.get(i).getName());
+            }
+        }
+    }
+
+    public void removeSandwich(int index) {
+        if (index >= 0 && index < sandwiches.size()) {
+            sandwiches.remove(index);
+            System.out.println("Sandwich removed successfully.");
+        }
+    }
+
+    public void replaceSandwich(int index, Sandwich newSandwich) {
+        if (index >= 0 && index < sandwiches.size()) {
+            sandwiches.set(index, newSandwich);
+            System.out.println("Sandwich replaced successfully.");
+        }
+    }
+
     //Calculate the total price of the order
     // Later will refactor to use streams here
     public double getTotalPrice() {

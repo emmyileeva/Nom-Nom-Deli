@@ -38,6 +38,10 @@ public class Sandwich {
         return toppings;
     }
 
+    public String getName() {
+        return size + "\" " + breadType + " Sandwich";
+    }
+
     public double getBasePrice() {
         switch (size) {
             case "4":
