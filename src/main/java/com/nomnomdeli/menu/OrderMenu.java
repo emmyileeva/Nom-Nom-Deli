@@ -62,6 +62,7 @@ public class OrderMenu {
 
                     if (confirmed) {
                         ReceiptWriter.saveReceipt(currentOrder);
+                        ReceiptWriter.appendToOrderHistory(currentOrder);
                         System.out.println("Thank you for your order! Your receipt has been saved.");
                         return true;
                     } else {

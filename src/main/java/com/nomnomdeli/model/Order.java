@@ -14,6 +14,7 @@ public class Order {
 
     public Order() {
         this.orderTime = LocalDateTime.now();
+        // Generate a unique order ID based on the current time
         this.orderId = "ORDER-" + orderTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"));
         this.sandwiches = new ArrayList<>();
         this.drinks = new ArrayList<>();
@@ -42,6 +43,18 @@ public class Order {
 
     public String getOrderId() {
         return orderId;
+    }
+
+    public List<Sandwich> getSandwiches() {
+        return sandwiches;
+    }
+
+    public List<Drink> getDrinks() {
+        return drinks;
+    }
+
+    public List<Chip> getChips() {
+        return chips;
     }
 
     //Calculate the total price of the order
