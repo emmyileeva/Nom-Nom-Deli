@@ -52,7 +52,19 @@ public class OrderMenu {
                     System.out.println("Chips added to your order!");
                     break;
                 case "4":
-                    // Checkout logic
+                    if (currentOrder.isEmpty()) {
+                        System.out.println("Your order is empty. Please add items before checking out.");
+                        break;
+                    }
+                    CheckoutMenu checkoutMenu = new CheckoutMenu(scanner);
+                    boolean confirmed = checkoutMenu.showCheckoutMenu(currentOrder);
+
+                    if (confirmed) {
+                        System.out.println("Thank you for your order! Your receipt has been saved.");
+                        return true;
+                    } else {
+                        System.out.println("Order canceled. Returning to order menu.");
+                    }
                     break;
                 case "0":
                     System.out.println("Order cancelled. Returning to home menu.");

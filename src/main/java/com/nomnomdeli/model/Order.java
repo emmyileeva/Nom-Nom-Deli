@@ -31,6 +31,10 @@ public class Order {
         this.chips.add(chip);
     }
 
+    public boolean isEmpty() {
+        return sandwiches.isEmpty() && drinks.isEmpty() && chips.isEmpty();
+    }
+
     //Calculate the total price of the order
     // Later will refactor to use streams here
     public double getTotalPrice() {
