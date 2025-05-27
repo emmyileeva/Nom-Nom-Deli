@@ -3,8 +3,6 @@ package com.nomnomdeli.menu;
 
 import com.nomnomdeli.model.Order;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class MenuService {
@@ -20,11 +18,9 @@ public class MenuService {
         boolean continueRunning = homeMenu.showHomeMenu();
 
         while (continueRunning) {
-            // Generate a unique order ID based on the current date and time
-            String orderId = "ORDER-" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-
-            // Create a new order with the generated order ID and launch the order menu
-            Order currentOrder = new Order(orderId);
+            // Create a new order for each session
+            Order currentOrder = new Order();
+            // Show the main menu and get the user's choice
             OrderMenu orderMenu = new OrderMenu(scanner, currentOrder);
             boolean orderDone = orderMenu.showOrderMenu();
 

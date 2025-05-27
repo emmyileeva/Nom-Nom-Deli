@@ -1,6 +1,7 @@
 package com.nomnomdeli.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,9 @@ public class Order {
     private String orderId;
     private LocalDateTime orderTime;
 
-    public Order(String orderId) {
-        this.orderId = orderId;
+    public Order() {
         this.orderTime = LocalDateTime.now();
+        this.orderId = "ORDER-" + orderTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"));
         this.sandwiches = new ArrayList<>();
         this.drinks = new ArrayList<>();
         this.chips = new ArrayList<>();
@@ -37,6 +38,10 @@ public class Order {
 
     public LocalDateTime getOrderTime() {
         return orderTime;
+    }
+
+    public String getOrderId() {
+        return orderId;
     }
 
     //Calculate the total price of the order
