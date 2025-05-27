@@ -35,6 +35,10 @@ public class Order {
         return sandwiches.isEmpty() && drinks.isEmpty() && chips.isEmpty();
     }
 
+    public LocalDateTime getOrderTime() {
+        return orderTime;
+    }
+
     //Calculate the total price of the order
     // Later will refactor to use streams here
     public double getTotalPrice() {
