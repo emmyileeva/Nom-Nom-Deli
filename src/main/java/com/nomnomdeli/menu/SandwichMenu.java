@@ -47,6 +47,7 @@ public class SandwichMenu {
         System.out.println("2) Wheat");
         System.out.println("3) Sourdough");
         System.out.println("4) Gluten-Free");
+        System.out.println("5) Lettuce Wrap");
         System.out.print("Please select an option (1-4): ");
 
         String breadInput = scanner.nextLine();
@@ -65,6 +66,9 @@ public class SandwichMenu {
             case "4":
                 bread = "Gluten-Free";
                 break;
+            case "5":
+                bread = "Lettuce Wrap";
+                break;
             default:
                 System.out.println("Invalid option. Please try again.");
                 return buildSandwich();
@@ -78,8 +82,8 @@ public class SandwichMenu {
         // 4. Add topping (meat, cheese, or regular topping)
         List<Topping> toppings = new ArrayList<>();
 
-        System.out.println("\nChoose your protein (type 'done' when finished):");
-        String[] proteins = {"Turkey", "Grilled Chicken", "Beef", "Tuna", "Tofu"};
+        System.out.println("\nChoose your protein:");
+        String[] proteins = {"Turkey", "Grilled Chicken", "Hummus", "Tuna", "Tofu", "Falafel"};
 
         for (String protein : proteins) {
             System.out.println("Add " + protein + "? (yes/no): ");
@@ -94,8 +98,8 @@ public class SandwichMenu {
             }
         }
 
-        System.out.println("\nChoose your cheese (type 'done' when finished):");
-        String[] cheeses = {"Cheddar", "Swiss", "Provolone", "Pepper Jack", "No Cheese"};
+        System.out.println("\nChoose your cheese:");
+        String[] cheeses = {"Cheddar", "Swiss", "Provolone", "Pepper Jack", "Goat Cheese", "Feta"};
 
         for (String cheese : cheeses) {
             System.out.println("Add " + cheese + "? (yes/no): ");
@@ -111,7 +115,7 @@ public class SandwichMenu {
         }
 
         System.out.println("\nChoose your veggies and sauces:");
-        String[] veggiesAndSauces = {"Lettuce", "Tomato", "Onion", "Jalapeños", "Pickles", "Mustard", "Mayo", "Ketchup", "ranch"};
+        String[] veggiesAndSauces = {"Lettuce", "Tomato", "Onion", "Jalapeños", "Pickles", "Bell Peppers", "Cucumber", "Avacado", "Spinach", "Sprouts", "Sun-Dried Tomatoes", "Mustard", "Light Mayo", "Ketchup", "ranch", "Pesto", "Cranberry Sauce", "Greek Yogurt Sauce"};
 
         for (String item : veggiesAndSauces) {
             System.out.println("Add " + item + "? (yes/no): ");

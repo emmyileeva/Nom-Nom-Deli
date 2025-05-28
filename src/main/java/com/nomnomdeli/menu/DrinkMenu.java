@@ -40,7 +40,7 @@ public class DrinkMenu {
 
         // 2. Choose a drink flavor
         System.out.println("\nChoose your drink flavor:");
-        String[] flavors = {"Cola", "Lemonade", "Iced Tea", "Orange Juice"};
+        String[] flavors = {"Cucumber Mint Water", "Lemon Infused Water", "Light Strawberry Lemonade", "Light Lemonade", "Iced Green Tea", "Coconut Water"};
         for (int i = 0; i < flavors.length; i++) {
             System.out.println((i + 1) + ") " + flavors[i]);
         }

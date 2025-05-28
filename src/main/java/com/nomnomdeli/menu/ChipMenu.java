@@ -15,7 +15,7 @@ public class ChipMenu {
 
         // 1. Show chip options and get user input
         System.out.println("\nChoose your chip type:");
-        String[] chipTypes = {"Classic", "Barbecue", "Sour Cream & Onion", "Salt & Vinegar"};
+        String[] chipTypes = {"Sweet Potato Chips", "Kettle Cooked Chips", "Baked Chips", "Pita Chips", "Veggie Chips"};
 
         for (int i = 0; i < chipTypes.length; i++) {
             System.out.println((i + 1) + ") " + chipTypes[i]);
