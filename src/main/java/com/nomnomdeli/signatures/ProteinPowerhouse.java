@@ -2,6 +2,8 @@ package com.nomnomdeli.signatures;
 
 import com.nomnomdeli.toppings.*;
 
+// This class represents the Protein Powerhouse signature sandwich.
+
 public class ProteinPowerhouse extends SignatureSandwich {
 
     public ProteinPowerhouse() {

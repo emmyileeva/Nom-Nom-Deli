@@ -4,6 +4,8 @@ import com.nomnomdeli.model.Order;
 
 import java.util.Scanner;
 
+// This menu handles the checkout process for the user.
+
 public class CheckoutMenu {
     private Scanner scanner;
 
@@ -17,17 +19,19 @@ public class CheckoutMenu {
         // 3. Return true if confirmed, false if canceled
         System.out.println("\n Order Summary:");
         System.out.println("--------------------------");
-        System.out.println(order);
+        System.out.println(order); // toString() method should be overridden in Order class to display order details
         System.out.println("--------------------------");
 
-        System.out.println("Confirm order and save the receipt? (yes/no)");
-        String input = scanner.nextLine().trim().toLowerCase();
+        while (true) {
+            System.out.println("Confirm order and save the receipt? (yes/no)");
+            String input = scanner.nextLine().trim().toLowerCase();
 
-        if (input.equals("yes") || input.equals("y")) {
-            return true; // user confirmed the order
-        } else {
-            System.out.println("Order canceled. Returning to the main menu.");
-            return false; // user canceled the order
+            if (input.equals("yes") || input.equals("y")) {
+                return true; // user confirmed the order
+            } else {
+                System.out.println("Order canceled. Returning to the main menu.");
+                return false; // user canceled the order
+            }
         }
     }
 }

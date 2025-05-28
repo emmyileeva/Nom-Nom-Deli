@@ -1,5 +1,7 @@
 package com.nomnomdeli.model;
 
+// This class represents a Drink item in the app.
+
 public class Drink {
     private String size;
     private String flavor;
@@ -18,7 +20,7 @@ public class Drink {
     }
 
     public double getPrice() {
-        switch (size.toLowerCase()) {
+        switch (size.trim().toLowerCase()) {
             case "small":
                 return 2.00;
             case "medium":

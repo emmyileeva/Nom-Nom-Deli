@@ -1,12 +1,14 @@
 package com.nomnomdeli.toppings;
 
+// This class represents a cheese topping for a sandwich.
+
 public class Cheese extends PremiumTopping {
 
     public Cheese(String name, boolean isExtra) {
         super(name, isExtra);
     }
 
-    // price of cheese toppings based on size
+    // price of cheese toppings based on size and whether it's extra or not
     @Override
     public double getPrice(String size) {
         double basePrice;

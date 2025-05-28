@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// This class provides a menu for building a custom sandwich.
+
 public class SandwichMenu {
     private Scanner scanner;
 
@@ -48,7 +50,7 @@ public class SandwichMenu {
         System.out.println("3) Sourdough");
         System.out.println("4) Gluten-Free");
         System.out.println("5) Lettuce Wrap");
-        System.out.print("Please select an option (1-4): ");
+        System.out.print("Please select an option (1-5): ");
 
         String breadInput = scanner.nextLine();
         String bread = null;
@@ -115,7 +117,7 @@ public class SandwichMenu {
         }
 
         System.out.println("\nChoose your veggies and sauces:");
-        String[] veggiesAndSauces = {"Lettuce", "Tomato", "Onion", "Jalapeños", "Pickles", "Bell Peppers", "Cucumber", "Avacado", "Spinach", "Sprouts", "Sun-Dried Tomatoes", "Mustard", "Light Mayo", "Ketchup", "ranch", "Pesto", "Cranberry Sauce", "Greek Yogurt Sauce"};
+        String[] veggiesAndSauces = {"Lettuce", "Tomato", "Onion", "Jalapeños", "Pickles", "Bell Peppers", "Cucumber", "Avocado", "Spinach", "Sprouts", "Sun-Dried Tomatoes", "Mustard", "Light Mayo", "Ketchup", "ranch", "Pesto", "Cranberry Sauce", "Greek Yogurt Sauce"};
 
         for (String item : veggiesAndSauces) {
             System.out.println("Add " + item + "? (yes/no): ");

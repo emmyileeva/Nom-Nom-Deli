@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+// This class represents an Order in the app.
+
 public class Order {
     private List<Sandwich> sandwiches;
     private List<Drink> drinks;
@@ -82,20 +84,10 @@ public class Order {
     }
 
     //Calculate the total price of the order
-    // Later will refactor to use streams here
     public double getTotalPrice() {
-        double total = 0.0;
-
-        for (Sandwich sandwich : sandwiches) {
-            total += sandwich.getTotalPrice();
-        }
-        for (Drink drink : drinks) {
-            total += drink.getPrice();
-        }
-        for (Chip chip : chips) {
-            total += chip.getPrice();
-        }
-        return total;
+        return sandwiches.stream().mapToDouble(Sandwich::getTotalPrice).sum() +
+                drinks.stream().mapToDouble(Drink::getPrice).sum() +
+                chips.stream().mapToDouble(Chip::getPrice).sum();
     }
 
     // Receipt summary for the order

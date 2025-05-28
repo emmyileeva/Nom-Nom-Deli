@@ -5,6 +5,8 @@ import com.nomnomdeli.model.Order;
 
 import java.util.Scanner;
 
+// This class controls the main app loop
+
 public class MenuService {
     private Scanner scanner;
 
@@ -17,6 +19,7 @@ public class MenuService {
         HomeMenu homeMenu = new HomeMenu(scanner);
         boolean continueRunning = homeMenu.showHomeMenu();
 
+        // Loop to keep the app running until the user decides to exit
         while (continueRunning) {
             // Create a new order for each session
             Order currentOrder = new Order();

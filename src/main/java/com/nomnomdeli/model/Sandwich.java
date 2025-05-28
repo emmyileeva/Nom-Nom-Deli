@@ -5,6 +5,8 @@ import com.nomnomdeli.toppings.Topping;
 import java.util.ArrayList;
 import java.util.List;
 
+// This class represents a Sandwich item in the app.
+
 public class Sandwich {
     private String size;
     private String breadType;
@@ -55,13 +57,11 @@ public class Sandwich {
         }
     }
 
-    // Calculate the price of toppings based on the size of the sandwich
+    // Calculate the price of toppings using a stream to sum the prices of all toppings based on the sandwich size
     public double getToppingPrice() {
-        double total = 0.00;
-        for (Topping topping : toppings) {
-            total += topping.getPrice(size);
-        }
-        return total;
+        return toppings.stream()
+                .mapToDouble(t -> t.getPrice(size))
+                .sum();
     }
 
     public double getTotalPrice() {

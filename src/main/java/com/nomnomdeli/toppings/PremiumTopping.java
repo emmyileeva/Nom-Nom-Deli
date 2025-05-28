@@ -1,5 +1,8 @@
 package com.nomnomdeli.toppings;
 
+// This class represents a premium topping that may be marked as extra.
+// It's an abstract class that provide a shared structure for subclasses like Meat and Cheese.
+
 public abstract class PremiumTopping implements Topping {
     // using protected to allow subclasses to access these fields but not outside the package
     protected String name;

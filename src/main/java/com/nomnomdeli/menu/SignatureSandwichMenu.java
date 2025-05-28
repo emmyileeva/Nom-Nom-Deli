@@ -5,6 +5,8 @@ import com.nomnomdeli.signatures.*;
 
 import java.util.Scanner;
 
+// This class provides a menu for selecting signature sandwiches.
+
 public class SignatureSandwichMenu {
     private Scanner scanner;
 
@@ -20,6 +22,7 @@ public class SignatureSandwichMenu {
         System.out.println("   - Falafel, Goat Cheese, Cucumber, Tomato, Onion, Greek Yogurt Sauce (Toasted Wheat)");
         System.out.println("3) Protein Powerhouse");
         System.out.println("   - Grilled Chicken, Turkey, Swiss, Lettuce, Bell Peppers, Mustard (Toasted Sourdough)");
+        System.out.println();
         System.out.print("Please select an option (1-3) or type 0 to cancel: ");
 
         String choice = scanner.nextLine().trim();

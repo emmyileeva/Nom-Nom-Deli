@@ -7,8 +7,9 @@ import com.nomnomdeli.model.Sandwich;
 import com.nomnomdeli.service.ReceiptWriter;
 import com.nomnomdeli.data.OrderLogger;
 
-
 import java.util.Scanner;
+
+// This class handles the main order menu where users can add items to their order, view/edit their order, and proceed to checkout.
 
 public class OrderMenu {
     private Scanner scanner;

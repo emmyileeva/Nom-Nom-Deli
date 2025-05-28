@@ -1,5 +1,7 @@
 package com.nomnomdeli.model;
 
+// This class represents a Chip item in the app.
+
 public class Chip {
     private String type;
     private static final double PRICE = 1.50;

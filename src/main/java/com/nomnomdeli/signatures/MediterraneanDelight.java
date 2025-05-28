@@ -2,6 +2,8 @@ package com.nomnomdeli.signatures;
 
 import com.nomnomdeli.toppings.*;
 
+// This class represents the Mediterranean Delight signature sandwich.
+
 public class MediterraneanDelight extends SignatureSandwich{
 
     public MediterraneanDelight() {

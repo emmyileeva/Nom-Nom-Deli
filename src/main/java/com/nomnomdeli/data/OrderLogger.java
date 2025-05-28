@@ -10,10 +10,14 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+// This class is responsible for saving order summaries to a CSV file.
+
 public class OrderLogger {
 
+    // path to the csv file where order history will be stored
     private static final String historyFile = "receipts/order_history.csv";
 
+    // This method appends a new order summary to the order history file.
     public static void appendToOrderHistory(Order order) {
         try (FileWriter writer = new FileWriter(historyFile, true)) {
             writer.write("\n--- New Order ---\n");

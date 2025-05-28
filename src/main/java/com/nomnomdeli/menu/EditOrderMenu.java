@@ -5,6 +5,8 @@ import com.nomnomdeli.model.Sandwich;
 
 import java.util.Scanner;
 
+// This class allows the user to edit their sandwich order.
+
 public class EditOrderMenu {
     private Scanner scanner;
 
@@ -12,6 +14,7 @@ public class EditOrderMenu {
         this.scanner = scanner;
     }
 
+    // This method displays the edit order menu and allows the user to edit or remove sandwiches from their order.
     public void showEditOrderMenu(Order order) {
         if (order.isEmpty()) {
             System.out.println("Your order is empty. Please add items before editing.");
@@ -46,6 +49,7 @@ public class EditOrderMenu {
                     SandwichMenu sandwichMenu = new SandwichMenu(scanner);
                     Sandwich newSandwich = sandwichMenu.buildSandwich();
                     order.replaceSandwich(index, newSandwich);
+                    System.out.println("Sandwich replaced successfully.");
                 } else {
                     System.out.println("Invalid option. Please select 1 or 2.");
                 }
@@ -55,6 +59,7 @@ public class EditOrderMenu {
         }
     }
 
+    // Helper method to get a valid integer input from the user
     private int getIntInput() {
         while (!scanner.hasNextInt()) {
             System.out.print("Invalid input. Please enter a number: ");

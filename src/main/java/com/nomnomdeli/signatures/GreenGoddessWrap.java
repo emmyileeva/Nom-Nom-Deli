@@ -2,6 +2,8 @@ package com.nomnomdeli.signatures;
 
 import com.nomnomdeli.toppings.*;
 
+// This class represents the Green Goddess Wrap signature sandwich.
+
 public class GreenGoddessWrap extends SignatureSandwich {
 
     public GreenGoddessWrap() {
