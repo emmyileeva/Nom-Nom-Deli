@@ -25,11 +25,12 @@ public class OrderMenu {
             System.out.println("\n🥪 Order Menu 🥪");
             System.out.println("----------------------------");
             System.out.println("1) Add a sandwich");
-            System.out.println("2) Add a drink");
-            System.out.println("3) Add chips");
-            System.out.println("4) View current order");
-            System.out.println("5) Edit current order");
-            System.out.println("6) Checkout");
+            System.out.println("2) Add a signature sandwich");
+            System.out.println("3) Add a drink");
+            System.out.println("4) Add chips");
+            System.out.println("5) View current order");
+            System.out.println("6) Edit current order");
+            System.out.println("7) Checkout");
             System.out.println("0) Cancel Order");
             System.out.print("Please select an option: ");
 
@@ -43,26 +44,36 @@ public class OrderMenu {
                     System.out.println("Sandwich added to your order!");
                     break;
                 case "2":
+                    SignatureSandwichMenu signatureMenu = new SignatureSandwichMenu(scanner);
+                    Sandwich signatureSandwich = signatureMenu.chooseSignatureSandwich();
+                    if (signatureSandwich != null) {
+                        currentOrder.addSandwich(signatureSandwich);
+                        System.out.println("Signature sandwich added to your order!");
+                    } else {
+                        System.out.println("No signature sandwich selected.");
+                    }
+                    break;
+                case "3":
                     DrinkMenu drinkMenu = new DrinkMenu(scanner);
                     Drink drink = drinkMenu.buildDrink();
                     currentOrder.addDrink(drink);
                     System.out.println("Drink added to your order!");
                     break;
-                case "3":
+                case "4":
                     ChipMenu chipMenu = new ChipMenu(scanner);
                     Chip chip = chipMenu.buildChip();
                     currentOrder.addChip(chip);
                     System.out.println("Chips added to your order!");
                     break;
-                case "4":
+                case "5":
                     ViewOrderMenu viewOrderMenu = new ViewOrderMenu(scanner);
                     viewOrderMenu.viewCurrentOrder(currentOrder);
                     break;
-                case "5":
+                case "6":
                     EditOrderMenu editOrderMenu = new EditOrderMenu(scanner);
                     editOrderMenu.showEditOrderMenu(currentOrder);
                     break;
-                case "6":
+                case "7":
                     if (currentOrder.isEmpty()) {
                         System.out.println("Your order is empty. Please add items before checking out.");
                         break;
