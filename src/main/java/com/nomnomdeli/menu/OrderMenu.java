@@ -6,6 +6,7 @@ import com.nomnomdeli.model.Order;
 import com.nomnomdeli.model.Sandwich;
 import com.nomnomdeli.service.ReceiptWriter;
 import com.nomnomdeli.data.OrderLogger;
+import com.nomnomdeli.utils.ColorTextHelper;
 
 import java.util.Scanner;
 
@@ -25,17 +26,21 @@ public class OrderMenu {
         boolean inOrder = true;
 
         while (inOrder) {
-            System.out.println("\n🥪 Order Menu 🥪");
-            System.out.println("----------------------------");
-            System.out.println("1) Add a sandwich");
-            System.out.println("2) Add a signature sandwich");
-            System.out.println("3) Add a drink");
-            System.out.println("4) Add chips");
-            System.out.println("5) View current order");
-            System.out.println("6) Edit current order");
-            System.out.println("7) Checkout");
-            System.out.println("0) Cancel Order");
-            System.out.print("Please select an option: ");
+            System.out.println();
+            System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────╮", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("│ 🥗  O R D E R   M E N U  🥒 │", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────╯", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("🌱 Build your fresh & healthy sandwich! 🌱", ColorTextHelper.MINT));
+            System.out.println(ColorTextHelper.colorize("────────────────────────────────────", ColorTextHelper.FRESH));
+            System.out.println(ColorTextHelper.colorize("1) 🥬 Build your own sandwich", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("2) 🥑 Add a signature sandwich", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("3) 🥤 Add a drink", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("4) 🥕 Add some chips", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("5) 👀 View your order", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("6) ✏️ Edit your order", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("7) 💚 Checkout & enjoy", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("0) ❌ Cancel Order", ColorTextHelper.PINK));
+            System.out.print(ColorTextHelper.colorize("\nWhat would you like to do? ", ColorTextHelper.LIME));
 
             String input = scanner.nextLine();
 
@@ -44,29 +49,29 @@ public class OrderMenu {
                     SandwichMenu sandwichMenu = new SandwichMenu(scanner);
                     Sandwich sandwich = sandwichMenu.buildSandwich();
                     currentOrder.addSandwich(sandwich);
-                    System.out.println("Sandwich added to your order!");
+                    System.out.println(ColorTextHelper.colorize("🥬 Your custom sandwich is added! 🥑", ColorTextHelper.MINT));
                     break;
                 case "2":
                     SignatureSandwichMenu signatureMenu = new SignatureSandwichMenu(scanner);
                     Sandwich signatureSandwich = signatureMenu.chooseSignatureSandwich();
                     if (signatureSandwich != null) {
                         currentOrder.addSandwich(signatureSandwich);
-                        System.out.println("Signature sandwich added to your order!");
+                        System.out.println(ColorTextHelper.colorize("🥑 Signature sandwich added! 🥗", ColorTextHelper.MINT));
                     } else {
-                        System.out.println("No signature sandwich selected.");
+                        System.out.println(ColorTextHelper.colorize("🌱 No signature sandwich selected.", ColorTextHelper.PINK));
                     }
                     break;
                 case "3":
                     DrinkMenu drinkMenu = new DrinkMenu(scanner);
                     Drink drink = drinkMenu.buildDrink();
                     currentOrder.addDrink(drink);
-                    System.out.println("Drink added to your order!");
+                    System.out.println(ColorTextHelper.colorize("🥤 Drink added! 💦", ColorTextHelper.MINT));
                     break;
                 case "4":
                     ChipMenu chipMenu = new ChipMenu(scanner);
                     Chip chip = chipMenu.buildChip();
                     currentOrder.addChip(chip);
-                    System.out.println("Chips added to your order!");
+                    System.out.println(ColorTextHelper.colorize("🥕 Chips added! 😋", ColorTextHelper.MINT));
                     break;
                 case "5":
                     ViewOrderMenu viewOrderMenu = new ViewOrderMenu(scanner);
@@ -78,7 +83,7 @@ public class OrderMenu {
                     break;
                 case "7":
                     if (currentOrder.isEmpty()) {
-                        System.out.println("Your order is empty. Please add items before checking out.");
+                        System.out.println(ColorTextHelper.colorize("🛒 Your order is empty. Please add some items first!", ColorTextHelper.PINK));
                         break;
                     }
                     CheckoutMenu checkoutMenu = new CheckoutMenu(scanner);
@@ -87,18 +92,18 @@ public class OrderMenu {
                     if (confirmed) {
                         ReceiptWriter.saveReceipt(currentOrder);
                         OrderLogger.appendToOrderHistory(currentOrder);
-                        System.out.println("Thank you for your order! Your receipt has been saved.");
+                        System.out.println(ColorTextHelper.colorize("💚 Thank you for your order! Your receipt is saved. 🌱", ColorTextHelper.MINT));
                         return true;
                     } else {
-                        System.out.println("Order canceled. Returning to order menu.");
+                        System.out.println(ColorTextHelper.colorize("❌ Order canceled. Back to the menu!", ColorTextHelper.PINK));
                     }
                     break;
                 case "0":
-                    System.out.println("Order cancelled. Returning to home menu.");
+                    System.out.println(ColorTextHelper.colorize("❌ Order cancelled. Returning to home menu.", ColorTextHelper.PINK));
                     inOrder = false; // Exit the order menu
                     break;
                 default:
-                    System.out.println("Invalid option. Please try again.");
+                    System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
             }
         }
         return false; // Return to home menu
