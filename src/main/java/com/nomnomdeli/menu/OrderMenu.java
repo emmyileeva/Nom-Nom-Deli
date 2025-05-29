@@ -28,7 +28,7 @@ public class OrderMenu {
         while (inOrder) {
             System.out.println();
             System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────╮", ColorTextHelper.AQUA));
-            System.out.println(ColorTextHelper.colorize("│ 🥗  O R D E R   M E N U  🥒 │", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("│    🥗  O R D E R   M E N U  🥒     │", ColorTextHelper.AQUA));
             System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────╯", ColorTextHelper.AQUA));
             System.out.println(ColorTextHelper.colorize("🌱 Build your fresh & healthy sandwich! 🌱", ColorTextHelper.MINT));
             System.out.println(ColorTextHelper.colorize("────────────────────────────────────", ColorTextHelper.FRESH));
