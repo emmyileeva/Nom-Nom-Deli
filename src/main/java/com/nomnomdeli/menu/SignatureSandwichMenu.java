@@ -17,16 +17,21 @@ public class SignatureSandwichMenu {
 
     public Sandwich chooseSignatureSandwich() {
         System.out.println();
-        System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────────────╮", ColorTextHelper.AQUA));
-        System.out.println(ColorTextHelper.colorize("│🥑 S I G N A T U R E  S A N D W I C H E S 🥗│", ColorTextHelper.AQUA));
-        System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────────────╯", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("🥑  S I G N A T U R E   S A N D W I C H E S  🥗", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("🌱 Try one of our fresh, healthy creations! 🌱", ColorTextHelper.MINT));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("────────────────────────────────────────────", ColorTextHelper.FRESH));
+        System.out.println();
 
         System.out.println(ColorTextHelper.colorize("1) 🥬 Green Goddess Wrap", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("   - Hummus, Feta, Cucumber, Avocado, Spinach, Sprouts, Pesto (Lettuce Wrap)", ColorTextHelper.FRESH));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("2) 🥙 Mediterranean Delight", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("   - Falafel, Goat Cheese, Cucumber, Tomato, Onion, Greek Yogurt Sauce (Toasted Wheat)", ColorTextHelper.FRESH));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("3) 💪 Protein Powerhouse", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("   - Grilled Chicken, Turkey, Swiss, Lettuce, Bell Peppers, Mustard (Toasted Sourdough)", ColorTextHelper.FRESH));
         System.out.println();
@@ -36,18 +41,23 @@ public class SignatureSandwichMenu {
 
         switch (choice) {
             case "1":
+                System.out.println();
                 System.out.println(ColorTextHelper.colorize("🥬 Green Goddess Wrap selected! 🥑", ColorTextHelper.MINT));
                 return new GreenGoddessWrap();
             case "2":
+                System.out.println();
                 System.out.println(ColorTextHelper.colorize("🥙 Mediterranean Delight selected! 🫒", ColorTextHelper.MINT));
                 return new MediterraneanDelight();
             case "3":
+                System.out.println();
                 System.out.println(ColorTextHelper.colorize("🥙 Mediterranean Delight selected! 🫒", ColorTextHelper.MINT));
                 return new ProteinPowerhouse();
             case "0":
+                System.out.println();
                 System.out.println(ColorTextHelper.colorize("❌ Cancelled signature sandwich selection.", ColorTextHelper.PINK));
                 return null; // Return null to indicate cancellation
             default:
+                System.out.println();
                 System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
                 return chooseSignatureSandwich(); // Restart the process if input is invalid
         }

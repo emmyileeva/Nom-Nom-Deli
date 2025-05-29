@@ -16,22 +16,27 @@ public class HomeMenu {
 
     // This method prints the logo of the application
     private void printLogo() {
-        System.out.println(ColorTextHelper.colorize("""
-                ╭──────────────────────────────╮
-                │ 🥪  N O M  N O M  D E L I  🥪│
-                ╰──────────────────────────────╯
-                """, ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize(
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                        "🥪   N O M   N O M   D E L I   🥪\n" +
+                        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n",
+                ColorTextHelper.AQUA
+        ));
     }
 
     // This method displays the home menu and handles user input
     public boolean showHomeMenu() {
         while (true) {
             printLogo();
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("🥖 Welcome to Nom Nom Deli 🥬", ColorTextHelper.MINT));
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("----------------------------", ColorTextHelper.FRESH));
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("1) 🥪 Start a new order", ColorTextHelper.LIME));
             System.out.println(ColorTextHelper.colorize("0) ❌ Close Up Shop", ColorTextHelper.PINK));
-            System.out.print("\n" + ColorTextHelper.colorize("What would you like to do? ", ColorTextHelper.LIME));
+            System.out.println();
+            System.out.print(ColorTextHelper.colorize("What would you like to do? ", ColorTextHelper.LIME));
 
             String input = scanner.nextLine();
 

@@ -20,17 +20,21 @@ public class SandwichMenu {
     public Sandwich buildSandwich() {
 
         System.out.println();
-        System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────────╮", ColorTextHelper.AQUA));
-        System.out.println(ColorTextHelper.colorize("│🥪B U I L D  Y O U R  S A N D W I C H 🥑│", ColorTextHelper.AQUA));
-        System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────────╯", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("🥪  B U I L D   Y O U R   S A N D W I C H  🥑", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("🌱 Let's craft a fresh sandwich! 🌱", ColorTextHelper.MINT));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("────────────────────────────────────────", ColorTextHelper.FRESH));
+        System.out.println();
 
         // 1. Choose a sandwich size
         System.out.println(ColorTextHelper.colorize("\nChoose your sandwich size:", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("1) 🥖 4\" - $5.50", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("2) 🥖 8\" - $7.00", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("3) 🥖 12\" - $8.50", ColorTextHelper.LIME));
+        System.out.println();
         System.out.print(ColorTextHelper.colorize("Please select an option (1-3): ", ColorTextHelper.LIME));
 
         String sizeInput = scanner.nextLine();
@@ -52,12 +56,14 @@ public class SandwichMenu {
         }
 
         // 2. Choose bread type
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("\nChoose your bread:", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("1) 🍞 White", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("2) 🌾 Wheat", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("3) 🥖 Sourdough", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("4) 🌾 Gluten-Free", ColorTextHelper.LIME));
         System.out.println(ColorTextHelper.colorize("5) 🥬 Lettuce Wrap", ColorTextHelper.LIME));
+        System.out.println();
         System.out.print(ColorTextHelper.colorize("Please select an option (1-5): ", ColorTextHelper.LIME));
 
         String breadInput = scanner.nextLine();
@@ -84,14 +90,17 @@ public class SandwichMenu {
                 return buildSandwich();
         }
         // 3. Toasted?
+        System.out.println();
         System.out.print(ColorTextHelper.colorize("\nWould you like your bread toasted? (yes/no): ", ColorTextHelper.LIME));
         String toastedInput = scanner.nextLine().trim().toLowerCase();
+        System.out.println();
 
         boolean toasted = toastedInput.equals("yes") || toastedInput.equals("y");
 
         // 4. Add Protein
         List<Topping> toppings = new ArrayList<>();
 
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("\nChoose your protein:", ColorTextHelper.LIME));
         String[] proteins = {"Turkey", "Grilled Chicken", "Hummus", "Tuna", "Tofu", "Falafel"};
         String[] proteinEmojis = {"🦃", "🍗", "🌱", "🐟", "🌱", "🥙"};
@@ -108,6 +117,7 @@ public class SandwichMenu {
         }
 
         // 5. Add Cheese
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("\nChoose your cheese:", ColorTextHelper.LIME));
         String[] cheeses = {"Cheddar", "Swiss", "Provolone", "Pepper Jack", "Goat Cheese", "Feta"};
         String[] cheeseEmojis = {"🧀", "🧀", "🧀", "🧀", "🐐", "🧀"};
@@ -124,6 +134,7 @@ public class SandwichMenu {
         }
 
         // 6. Add veggies and sauces
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("\nChoose your veggies and sauces:", ColorTextHelper.LIME));
         String[] veggiesAndSauces = {
                 "Lettuce", "Tomato", "Onion", "Jalapeños", "Pickles", "Bell Peppers", "Cucumber", "Avocado", "Spinach", "Sprouts", "Sun-Dried Tomatoes",
@@ -148,6 +159,7 @@ public class SandwichMenu {
             sandwich.addTopping(topping);
         }
 
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("\n🥗 Your sandwich has been built! 🥗", ColorTextHelper.MINT));
         System.out.println(ColorTextHelper.colorize("────────────────────────────────────────", ColorTextHelper.FRESH));
         System.out.println(ColorTextHelper.colorize(sandwich.toString(), ColorTextHelper.FRESH));

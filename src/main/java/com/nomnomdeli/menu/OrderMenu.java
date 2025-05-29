@@ -27,11 +27,14 @@ public class OrderMenu {
 
         while (inOrder) {
             System.out.println();
-            System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────╮", ColorTextHelper.AQUA));
-            System.out.println(ColorTextHelper.colorize("│    🥗  O R D E R   M E N U  🥒     │", ColorTextHelper.AQUA));
-            System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────╯", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("🥗  O R D E R   M E N U  🥒", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("🌱 Build your fresh & healthy sandwich! 🌱", ColorTextHelper.MINT));
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("────────────────────────────────────", ColorTextHelper.FRESH));
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("1) 🥬 Build your own sandwich", ColorTextHelper.LIME));
             System.out.println(ColorTextHelper.colorize("2) 🥑 Add a signature sandwich", ColorTextHelper.LIME));
             System.out.println(ColorTextHelper.colorize("3) 🥤 Add a drink", ColorTextHelper.LIME));
@@ -40,7 +43,8 @@ public class OrderMenu {
             System.out.println(ColorTextHelper.colorize("6) ✏️ Edit your order", ColorTextHelper.LIME));
             System.out.println(ColorTextHelper.colorize("7) 💚 Checkout & enjoy", ColorTextHelper.LIME));
             System.out.println(ColorTextHelper.colorize("0) ❌ Cancel Order", ColorTextHelper.PINK));
-            System.out.print(ColorTextHelper.colorize("\nWhat would you like to do? ", ColorTextHelper.LIME));
+            System.out.println();
+            System.out.print(ColorTextHelper.colorize("What would you like to do? ", ColorTextHelper.LIME));
 
             String input = scanner.nextLine();
 
@@ -92,18 +96,26 @@ public class OrderMenu {
                     if (confirmed) {
                         ReceiptWriter.saveReceipt(currentOrder);
                         OrderLogger.appendToOrderHistory(currentOrder);
+                        System.out.println();
                         System.out.println(ColorTextHelper.colorize("💚 Thank you for your order! Your receipt is saved. 🌱", ColorTextHelper.MINT));
+                        System.out.println();
                         return true;
                     } else {
+                        System.out.println();
                         System.out.println(ColorTextHelper.colorize("❌ Order canceled. Back to the menu!", ColorTextHelper.PINK));
+                        System.out.println();
                     }
                     break;
                 case "0":
+                    System.out.println();
                     System.out.println(ColorTextHelper.colorize("❌ Order cancelled. Returning to home menu.", ColorTextHelper.PINK));
+                    System.out.println();
                     inOrder = false; // Exit the order menu
                     break;
                 default:
+                    System.out.println();
                     System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
+                    System.out.println();
             }
         }
         return false; // Return to home menu

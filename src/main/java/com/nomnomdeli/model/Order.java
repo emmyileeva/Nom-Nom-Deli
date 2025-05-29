@@ -1,5 +1,7 @@
 package com.nomnomdeli.model;
 
+import com.nomnomdeli.utils.ColorTextHelper;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -94,36 +96,49 @@ public class Order {
     @Override
     public String toString() {
         StringBuilder orderDetails = new StringBuilder();
-        orderDetails.append("Order ID: ").append(orderId).append("\n");
-        orderDetails.append("Order Time: ").append(orderTime).append("\n\n");
+
+        orderDetails.append(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n", ColorTextHelper.AQUA));
+        orderDetails.append(ColorTextHelper.colorize("🧾   N O M   N O M   D E L I   R E C E I P T   🧾\n", ColorTextHelper.AQUA));
+        orderDetails.append(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n", ColorTextHelper.AQUA));
+        orderDetails.append("\n");
+
+        orderDetails.append(ColorTextHelper.colorize("Order ID: ", ColorTextHelper.MINT))
+                .append(ColorTextHelper.colorize(orderId, ColorTextHelper.LIME)).append("\n");
+        orderDetails.append(ColorTextHelper.colorize("Order Time: ", ColorTextHelper.MINT))
+                .append(ColorTextHelper.colorize(orderTime.toString(), ColorTextHelper.LIME)).append("\n\n");
 
         if (sandwiches.isEmpty() && drinks.isEmpty() && chips.isEmpty()) {
-            orderDetails.append("No items in this order.\n");
+            orderDetails.append(ColorTextHelper.colorize("No items in this order.\n", ColorTextHelper.PINK));
         } else {
             if (!sandwiches.isEmpty()) {
-                orderDetails.append("Sandwiches:\n");
+                orderDetails.append(ColorTextHelper.colorize("🥪 Sandwiches:\n", ColorTextHelper.LIME));
                 for (Sandwich sandwich : sandwiches) {
-                    orderDetails.append(sandwich).append("\n\n");
+                    orderDetails.append(ColorTextHelper.colorize(sandwich.toString(), ColorTextHelper.LIME)).append("\n");
+                    orderDetails.append(ColorTextHelper.colorize("----------------------------------------------\n", ColorTextHelper.FRESH));
                 }
+                orderDetails.append("\n");
             }
 
             if (!drinks.isEmpty()) {
-                orderDetails.append("Drinks:\n");
+                orderDetails.append(ColorTextHelper.colorize("🥤 Drinks:\n", ColorTextHelper.LIME));
                 for (Drink drink : drinks) {
-                    orderDetails.append(" - ").append(drink).append("\n");
+                    orderDetails.append(" - ").append(ColorTextHelper.colorize(drink.toString(), ColorTextHelper.LIME)).append("\n");
                 }
+                orderDetails.append("\n");
             }
 
             if (!chips.isEmpty()) {
-                orderDetails.append("Chips:\n");
+                orderDetails.append(ColorTextHelper.colorize("🥔 Chips:\n", ColorTextHelper.LIME));
                 for (Chip chip : chips) {
-                    orderDetails.append(" - ").append(chip).append("\n");
+                    orderDetails.append(" - ").append(ColorTextHelper.colorize(chip.toString(), ColorTextHelper.LIME)).append("\n");
                 }
+                orderDetails.append("\n");
             }
 
-            orderDetails.append(String.format("\nTotal: $%.2f", getTotalPrice()));
+            orderDetails.append(ColorTextHelper.colorize(String.format("💵 Total: $%.2f\n", getTotalPrice()), ColorTextHelper.MINT));
         }
 
+        orderDetails.append(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
         return orderDetails.toString();
     }
 }

@@ -1,6 +1,7 @@
 package com.nomnomdeli.service;
 
 import com.nomnomdeli.model.Order;
+import com.nomnomdeli.utils.ColorTextHelper;
 
 // This class handles saving the receipt of an order to a file.
 
@@ -18,9 +19,9 @@ public class ReceiptWriter {
         // Write the order details to the receipt file
         try (FileWriter writer = new FileWriter(receiptFileName)) {
             writer.write(order.toString());
-            System.out.println("Receipt saved to " + receiptFileName);
+            System.out.println(ColorTextHelper.colorize("Receipt saved to " + receiptFileName, ColorTextHelper.MINT));
         } catch (IOException e) {
-            System.err.println("Error saving receipt: " + e.getMessage());
+            System.out.println(ColorTextHelper.colorize("Error saving receipt: " + e.getMessage(), ColorTextHelper.PINK));
         }
     }
 }

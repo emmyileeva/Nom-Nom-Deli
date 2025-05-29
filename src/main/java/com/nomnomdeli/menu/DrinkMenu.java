@@ -21,11 +21,14 @@ public class DrinkMenu {
 
         // Header
         System.out.println();
-        System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────────────╮", ColorTextHelper.AQUA));
-        System.out.println(ColorTextHelper.colorize("│     🥤  C H O O S E   A   D R I N K  🥒    │", ColorTextHelper.AQUA));
-        System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────────────╯", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("     🥤  C H O O S E   A   D R I N K  🥒    ", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("🌱 Refresh with a tasty drink! 🌱", ColorTextHelper.MINT));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("────────────────────────────────────────────", ColorTextHelper.FRESH));
+        System.out.println();
 
         // 1. choose a drink size
         while (size == null) {
@@ -48,7 +51,9 @@ public class DrinkMenu {
                     size = "Large";
                     break;
                 default:
+                    System.out.println();
                     System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
+                    System.out.println();
             }
         }
 
@@ -62,6 +67,7 @@ public class DrinkMenu {
         };
 
         while (flavor == null) {
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("\nChoose your drink flavor:", ColorTextHelper.LIME));
             for (int i = 0; i < flavors.length; i++) {
                 System.out.println(ColorTextHelper.colorize((i + 1) + ") " + flavorEmojis[i] + " " + flavors[i], ColorTextHelper.LIME));
@@ -76,15 +82,21 @@ public class DrinkMenu {
                 if (flavorIndex >= 0 && flavorIndex < flavors.length) {
                     flavor = flavors[flavorIndex];
                 } else {
+                    System.out.println();
                     System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
+                    System.out.println();
                 }
             } catch (Exception e) {
+                System.out.println();
                 System.out.println(ColorTextHelper.colorize("🚫 Invalid input. Please enter a number.", ColorTextHelper.PINK)); // Restart the process if input is not a number
+                System.out.println();
             }
         }
         // 3. Return the drink object
         Drink drink = new Drink(size, flavor);
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("🥤 You have selected a " + size + " " + flavor, ColorTextHelper.MINT));
+        System.out.println();
         return drink;
     }
 }

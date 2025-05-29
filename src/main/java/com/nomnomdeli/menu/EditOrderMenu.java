@@ -25,13 +25,19 @@ public class EditOrderMenu {
         boolean inEditOrder = true;
         while (inEditOrder) {
             System.out.println();
-            System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────────────╮", ColorTextHelper.AQUA));
-            System.out.println(ColorTextHelper.colorize("│    🥪  E D I T   Y O U R   O R D E R  🥑   │", ColorTextHelper.AQUA));
-            System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────────────╯", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("🥪   E D I T   Y O U R   O R D E R   🥑", ColorTextHelper.AQUA));
+            System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("🌱 Update your sandwich lineup! 🌱", ColorTextHelper.MINT));
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("────────────────────────────────────────────", ColorTextHelper.FRESH));
+            System.out.println();
 
             order.listSandwiches(); // Display current sandwiches in the order with their indices
+            System.out.println();
+            System.out.println(ColorTextHelper.colorize("────────────────────────────────────────────", ColorTextHelper.FRESH));
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("0) Back to Order Menu", ColorTextHelper.LIME));
             System.out.print(ColorTextHelper.colorize("Select a sandwich number to edit/remove: ", ColorTextHelper.LIME));
 
@@ -44,6 +50,7 @@ public class EditOrderMenu {
 
             int index = choice - 1; // Convert to zero-based index
             if (index >= 0 && index < order.getSandwiches().size()) {
+                System.out.println();
                 System.out.println(ColorTextHelper.colorize("\n1) 🗑️ Remove this sandwich", ColorTextHelper.LIME));
                 System.out.println(ColorTextHelper.colorize("2) 🔄 Replace this sandwich", ColorTextHelper.LIME));
                 System.out.print(ColorTextHelper.colorize("Choose an option (1 or 2): ", ColorTextHelper.LIME));
@@ -51,18 +58,27 @@ public class EditOrderMenu {
 
                 if (option == 1) {
                     order.removeSandwich(index);
+                    System.out.println();
                     System.out.println(ColorTextHelper.colorize("🗑️ Sandwich removed from your order!", ColorTextHelper.MINT));
+                    System.out.println();
                 } else if (option == 2) {
+                    System.out.println();
                     System.out.println(ColorTextHelper.colorize("\n🥪 Build a new sandwich to replace the old one:", ColorTextHelper.LIME));
                     SandwichMenu sandwichMenu = new SandwichMenu(scanner);
                     Sandwich newSandwich = sandwichMenu.buildSandwich();
                     order.replaceSandwich(index, newSandwich);
+                    System.out.println();
                     System.out.println(ColorTextHelper.colorize("✅ Sandwich replaced successfully!", ColorTextHelper.MINT));
+                    System.out.println();
                 } else {
+                    System.out.println();
                     System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please select 1 or 2.", ColorTextHelper.PINK));
+                    System.out.println();
                 }
             } else {
+                System.out.println();
                 System.out.println(ColorTextHelper.colorize("🚫 Invalid choice. Please select a valid sandwich number.", ColorTextHelper.PINK));
+                System.out.println();
             }
         }
     }

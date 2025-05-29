@@ -25,11 +25,14 @@ public class ChipMenu {
         };
 
         System.out.println();
-        System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────────────╮", ColorTextHelper.AQUA));
-        System.out.println(ColorTextHelper.colorize("│     🥔  C H O O S E   A   C H I P  🥦      │", ColorTextHelper.AQUA));
-        System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────────────╯", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("     🥔  C H O O S E   A   C H I P  🥦      ", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", ColorTextHelper.AQUA));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("🌱 Pick a crunchy side! 🌱", ColorTextHelper.MINT));
+        System.out.println();
         System.out.println(ColorTextHelper.colorize("────────────────────────────────────────────", ColorTextHelper.FRESH));
+        System.out.println();
 
         while (true) {
             // 1. Show chip options and get user input
@@ -45,18 +48,24 @@ public class ChipMenu {
             try {
                 chipIndex = Integer.parseInt(input) - 1;
                 if (chipIndex < 0 || chipIndex >= chipTypes.length) {
+                    System.out.println();
                     System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
+                    System.out.println();
                     return buildChip(); // Restart the process if input is invalid
                 }
             } catch (NumberFormatException e) {
+                System.out.println();
                 System.out.println(ColorTextHelper.colorize("🚫 Invalid input. Please enter a number.", ColorTextHelper.PINK));
+                System.out.println();
                 return buildChip(); // Restart the process if input is not a number
             }
 
             String selectedChipType = chipTypes[chipIndex];
             // Return a Chip object based on user input
             Chip chip = new Chip(selectedChipType);
+            System.out.println();
             System.out.println(ColorTextHelper.colorize("🥔 You selected: " + selectedChipType + "! 🥦", ColorTextHelper.MINT));
+            System.out.println();
             return chip;
         }
     }
