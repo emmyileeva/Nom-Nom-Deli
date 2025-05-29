@@ -21,7 +21,7 @@ public class SandwichMenu {
 
         System.out.println();
         System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────────╮", ColorTextHelper.AQUA));
-        System.out.println(ColorTextHelper.colorize("│ 🥪B U I L D Y O U R S A N D W I C H 🥑 │", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("│🥪B U I L D  Y O U R  S A N D W I C H 🥑│", ColorTextHelper.AQUA));
         System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────────╯", ColorTextHelper.AQUA));
         System.out.println(ColorTextHelper.colorize("🌱 Let's craft a fresh sandwich! 🌱", ColorTextHelper.MINT));
         System.out.println(ColorTextHelper.colorize("────────────────────────────────────────", ColorTextHelper.FRESH));
