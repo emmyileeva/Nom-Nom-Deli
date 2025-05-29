@@ -1,6 +1,7 @@
 package com.nomnomdeli.menu;
 
 import com.nomnomdeli.model.Drink;
+import com.nomnomdeli.utils.ColorTextHelper;
 
 import java.util.Scanner;
 
@@ -18,13 +19,21 @@ public class DrinkMenu {
         String size = null;
         String flavor = null;
 
+        // Header
+        System.out.println();
+        System.out.println(ColorTextHelper.colorize("╭────────────────────────────────────────────╮", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("│     🥤  C H O O S E   A   D R I N K  🥒    │", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("╰────────────────────────────────────────────╯", ColorTextHelper.AQUA));
+        System.out.println(ColorTextHelper.colorize("🌱 Refresh with a tasty drink! 🌱", ColorTextHelper.MINT));
+        System.out.println(ColorTextHelper.colorize("────────────────────────────────────────────", ColorTextHelper.FRESH));
+
         // 1. choose a drink size
         while (size == null) {
-            System.out.println("\nChoose your drink size:");
-            System.out.println("1) Small - $2.00");
-            System.out.println("2) Medium - $2.50");
-            System.out.println("3) Large - $3.00");
-            System.out.print("Please select an option (1-3): ");
+            System.out.println(ColorTextHelper.colorize("\nChoose your drink size:", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("1) 🥤 Small - $2.00", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("2) 🥤 Medium - $2.50", ColorTextHelper.LIME));
+            System.out.println(ColorTextHelper.colorize("3) 🥤 Large - $3.00", ColorTextHelper.LIME));
+            System.out.print(ColorTextHelper.colorize("Please select an option (1-3): ", ColorTextHelper.LIME));
 
             String sizeInput = scanner.nextLine();
 
@@ -39,19 +48,25 @@ public class DrinkMenu {
                     size = "Large";
                     break;
                 default:
-                    System.out.println("Invalid option. Please try again.");
+                    System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
             }
         }
 
         // 2. Choose a drink flavor
-        String[] flavors = {"Cucumber Mint Water", "Lemon Infused Water", "Light Strawberry Lemonade", "Light Lemonade", "Iced Green Tea", "Coconut Water"};
+        String[] flavors = {
+                "Cucumber Mint Water", "Lemon Infused Water", "Light Strawberry Lemonade",
+                "Light Lemonade", "Iced Green Tea", "Coconut Water"
+        };
+        String[] flavorEmojis = {
+                "🥒", "🍋", "🍓", "🍋", "🍵", "🥥"
+        };
 
         while (flavor == null) {
-            System.out.println("\nChoose your drink flavor:");
+            System.out.println(ColorTextHelper.colorize("\nChoose your drink flavor:", ColorTextHelper.LIME));
             for (int i = 0; i < flavors.length; i++) {
-                System.out.println((i + 1) + ") " + flavors[i]);
+                System.out.println(ColorTextHelper.colorize((i + 1) + ") " + flavorEmojis[i] + " " + flavors[i], ColorTextHelper.LIME));
             }
-            System.out.print("Please select an option (1-" + flavors.length + "): ");
+            System.out.print(ColorTextHelper.colorize("Please select an option (1-" + flavors.length + "): ", ColorTextHelper.LIME));
 
             String flavorInput = scanner.nextLine();
             int flavorIndex;
@@ -61,15 +76,15 @@ public class DrinkMenu {
                 if (flavorIndex >= 0 && flavorIndex < flavors.length) {
                     flavor = flavors[flavorIndex];
                 } else {
-                    System.out.println("Invalid option. Please try again.");
+                    System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
                 }
             } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a number."); // Restart the process if input is not a number
+                System.out.println(ColorTextHelper.colorize("🚫 Invalid input. Please enter a number.", ColorTextHelper.PINK)); // Restart the process if input is not a number
             }
         }
         // 3. Return the drink object
         Drink drink = new Drink(size, flavor);
-        System.out.println("You have selected a " + size + " " + flavor + " drink.");
+        System.out.println(ColorTextHelper.colorize("🥤 You have selected a " + size + " " + flavor, ColorTextHelper.MINT));
         return drink;
     }
 }
