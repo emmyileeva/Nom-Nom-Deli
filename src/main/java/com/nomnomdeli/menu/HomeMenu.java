@@ -17,7 +17,7 @@ public class HomeMenu {
     // This method prints the logo of the application
     private void printLogo() {
         System.out.println(ColorTextHelper.colorize(
-                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
                         "🥪   N O M   N O M   D E L I   🥪\n" +
                         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n",
                 ColorTextHelper.AQUA
