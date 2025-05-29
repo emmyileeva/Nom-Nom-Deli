@@ -19,6 +19,7 @@ class SandwichTest {
 
         // Act
         sandwich.addTopping(topping);
+
         // Assert
         assertTrue(sandwich.getToppings().contains(topping));
     }
@@ -31,8 +32,10 @@ class SandwichTest {
         Topping topping2 = new RegularTopping("Pickles");
         sandwich.addTopping(topping1);
         sandwich.addTopping(topping2);
+
         // Act
         List<Topping> toppings = sandwich.getToppings();
+
         // Assert
         assertEquals(2, toppings.size());
         assertTrue(toppings.contains(topping1));
@@ -41,9 +44,7 @@ class SandwichTest {
 
     @Test
     void getBasePrice_shouldReturnCorrectPriceForEachSize() {
-        // Arrange
-        // Act
-        // Assert
+        // Arrange & Act & Assert
         assertEquals(5.50, new Sandwich("4", "White", false).getBasePrice(), 0.01);
         assertEquals(7.00, new Sandwich("8", "Wheat", true).getBasePrice(), 0.01);
         assertEquals(8.50, new Sandwich("12", "Sourdough", true).getBasePrice(), 0.01);
@@ -56,8 +57,10 @@ class SandwichTest {
         Sandwich sandwich = new Sandwich("8", "White", false);
         sandwich.addTopping(new Cheese("Cheddar", false)); // should be 1.5
         sandwich.addTopping(new Cheese("Swiss", true)); // should be 2.1
+
         // Act
         double totalToppingPrice = sandwich.getToppingPrice();
+
         // Assert
         assertEquals(3.6, totalToppingPrice, 0.01);
     }
@@ -70,6 +73,7 @@ class SandwichTest {
 
         // Act
         double totalPrice = sandwich.getTotalPrice();
+
         // Assert
         assertEquals(6.55, totalPrice, 0.01);
     }
