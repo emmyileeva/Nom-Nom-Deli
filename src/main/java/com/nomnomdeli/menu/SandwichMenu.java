@@ -38,21 +38,16 @@ public class SandwichMenu {
         System.out.print(ColorTextHelper.colorize("Please select an option (1-3): ", ColorTextHelper.LIME));
 
         String sizeInput = scanner.nextLine();
-        String size = null;
+        String size = switch (sizeInput) {
+            case "1" -> "4";
+            case "2" -> "8";
+            case "3" -> "12";
+            default -> null;
+        };
 
-        switch (sizeInput) {
-            case "1":
-                size = "4";
-                break;
-            case "2":
-                size = "8";
-                break;
-            case "3":
-                size = "12";
-                break;
-            default:
-                System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
-                return buildSandwich();
+        if (size == null) {
+            System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
+            return buildSandwich();
         }
 
         // 2. Choose bread type
@@ -67,97 +62,52 @@ public class SandwichMenu {
         System.out.print(ColorTextHelper.colorize("Please select an option (1-5): ", ColorTextHelper.LIME));
 
         String breadInput = scanner.nextLine();
-        String bread = null;
+        String bread = switch (breadInput) {
+            case "1" -> "White";
+            case "2" -> "Wheat";
+            case "3" -> "Sourdough";
+            case "4" -> "Gluten-Free";
+            case "5" -> "Lettuce Wrap";
+            default -> null;
+        };
 
-        switch (breadInput) {
-            case "1":
-                bread = "White";
-                break;
-            case "2":
-                bread = "Wheat";
-                break;
-            case "3":
-                bread = "Sourdough";
-                break;
-            case "4":
-                bread = "Gluten-Free";
-                break;
-            case "5":
-                bread = "Lettuce Wrap";
-                break;
-            default:
-                System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
-                return buildSandwich();
+        if (bread == null) {
+            System.out.println(ColorTextHelper.colorize("🚫 Invalid option. Please try again.", ColorTextHelper.PINK));
+            return buildSandwich();
         }
+
         // 3. Toasted?
-        System.out.println();
-        System.out.print(ColorTextHelper.colorize("\nWould you like your bread toasted? (yes/no): ", ColorTextHelper.LIME));
-        String toastedInput = scanner.nextLine().trim().toLowerCase();
-        System.out.println();
+        // This loop validates user input for 'toasted' to make sure it is either 'yes' or 'no' or 'y' or 'n'.
+        boolean toasted = false;
+        while (true) {
+            System.out.println();
+            System.out.print(ColorTextHelper.colorize("\nWould you like your bread toasted? (yes/no): ", ColorTextHelper.LIME));
+            String toastedInput = scanner.nextLine().trim().toLowerCase();
+            if (toastedInput.equals("yes") || toastedInput.equals("y")) {
+                toasted = true;
+                break;
+            } else if (toastedInput.equals("no") || toastedInput.equals("n")) {
+                toasted = false;
+                break;
+            } else {
+                System.out.println(ColorTextHelper.colorize("⚠️ Please enter 'yes' or 'no' (or 'y'/'n').", ColorTextHelper.PINK));
+            }
+        }
 
-        boolean toasted = toastedInput.equals("yes") || toastedInput.equals("y");
-
-        // 4. Add Protein
         List<Topping> toppings = new ArrayList<>();
-
-        System.out.println();
-        System.out.println(ColorTextHelper.colorize("\nChoose your protein:", ColorTextHelper.LIME));
-        String[] proteins = {"Turkey", "Grilled Chicken", "Hummus", "Tuna", "Tofu", "Falafel"};
-        String[] proteinEmojis = {"🦃", "🍗", "🌱", "🐟", "🌱", "🥙"};
-
-        for (int i = 0; i < proteins.length; i++) {
-            System.out.print(ColorTextHelper.colorize("Add " + proteinEmojis[i] + " " + proteins[i] + "? (yes/no): ", ColorTextHelper.LIME));
-            String proteinInput = scanner.nextLine().trim().toLowerCase();
-            if (proteinInput.equals("yes") || proteinInput.equals("y")) {
-                System.out.print(ColorTextHelper.colorize("Make " + proteins[i] + " extra? (yes/no): ", ColorTextHelper.LIME));
-                String extraInput = scanner.nextLine().trim().toLowerCase();
-                boolean extra = extraInput.equals("yes") || extraInput.equals("y");
-                toppings.add(new Meat(proteins[i], extra));
-            }
-        }
-
-        // 5. Add Cheese
-        System.out.println();
-        System.out.println(ColorTextHelper.colorize("\nChoose your cheese:", ColorTextHelper.LIME));
-        String[] cheeses = {"Cheddar", "Swiss", "Provolone", "Pepper Jack", "Goat Cheese", "Feta"};
-        String[] cheeseEmojis = {"🧀", "🧀", "🧀", "🧀", "🐐", "🧀"};
-
-        for (int i = 0; i < cheeses.length; i++) {
-            System.out.print(ColorTextHelper.colorize("Add " + cheeseEmojis[i] + " " + cheeses[i] + "? (yes/no): ", ColorTextHelper.LIME));
-            String cheeseInput = scanner.nextLine().trim().toLowerCase();
-            if (cheeseInput.equals("yes") || cheeseInput.equals("y")) {
-                System.out.print(ColorTextHelper.colorize("Make " + cheeses[i] + " extra? (yes/no): ", ColorTextHelper.LIME));
-                String extraInput = scanner.nextLine().trim().toLowerCase();
-                boolean extra = extraInput.equals("yes") || extraInput.equals("y");
-                toppings.add(new Cheese(cheeses[i], extra));
-            }
-        }
-
-        // 6. Add veggies and sauces
-        System.out.println();
-        System.out.println(ColorTextHelper.colorize("\nChoose your veggies and sauces:", ColorTextHelper.LIME));
-        String[] veggiesAndSauces = {
+        // Toppings are grouped and added in three separate calls for protein, cheese, and veggies/sauces, each with specific behavior for extra options.
+        toppings.addAll(chooseMultiple("protein", new String[]{"Turkey", "Grilled Chicken", "Hummus", "Tuna", "Tofu", "Falafel"}, new String[]{"🦃", "🍗", "🌱", "🐟", "🌱", "🥙"}, true));
+        toppings.addAll(chooseMultiple("cheese", new String[]{"Cheddar", "Swiss", "Provolone", "Pepper Jack", "Goat Cheese", "Feta"}, new String[]{"🧀", "🧀", "🧀", "🧀", "🐐", "🧀"}, true));
+        toppings.addAll(chooseMultiple("veggies/sauces", new String[]{
                 "Lettuce", "Tomato", "Onion", "Jalapeños", "Pickles", "Bell Peppers", "Cucumber", "Avocado", "Spinach", "Sprouts", "Sun-Dried Tomatoes",
                 "Mustard", "Light Mayo", "Ketchup", "Ranch", "Pesto", "Cranberry Sauce", "Greek Yogurt Sauce"
-        };
-        String[] veggieEmojis = {
+        }, new String[]{
                 "🥬", "🍅", "🧅", "🌶️", "🥒", "🫑", "🥒", "🥑", "🥬", "🌱", "🍅",
                 "🌱", "🥚", "🍅", "🥛", "🌿", "🍒", "🥛"
-        };
+        }, false));
 
-        for (int i = 0; i < veggiesAndSauces.length; i++) {
-            System.out.print(ColorTextHelper.colorize("Add " + veggieEmojis[i] + " " + veggiesAndSauces[i] + "? (yes/no): ", ColorTextHelper.LIME));
-            String itemInput = scanner.nextLine().trim().toLowerCase();
-            if (itemInput.equals("yes") || itemInput.equals("y")) {
-                toppings.add(new RegularTopping(veggiesAndSauces[i]));
-            }
-        }
-
-        // 7. Build the sandwich
         Sandwich sandwich = new Sandwich(size, bread, toasted);
-        for (Topping topping : toppings) {
-            sandwich.addTopping(topping);
-        }
+        toppings.forEach(sandwich::addTopping);
 
         System.out.println();
         System.out.println(ColorTextHelper.colorize("\n🥗 Your sandwich has been built! 🥗", ColorTextHelper.MINT));
@@ -165,6 +115,45 @@ public class SandwichMenu {
         System.out.println(ColorTextHelper.colorize(sandwich.toString(), ColorTextHelper.FRESH));
 
         return sandwich;
+    }
 
+    private List<Topping> chooseMultiple(String label, String[] options, String[] emojis, boolean askExtra) {
+        List<Topping> selected = new ArrayList<>();
+        System.out.println(ColorTextHelper.colorize("\nChoose your " + label + " (you can enter multiple, separated by commas):", ColorTextHelper.LIME));
+        for (int i = 0; i < options.length; i++) {
+            System.out.println(ColorTextHelper.colorize(" - " + emojis[i] + " " + options[i], ColorTextHelper.LIME));
+        }
+        System.out.print("\n> ");
+        // This splits the user's input into individual toppings based on commas.
+        String[] inputItems = scanner.nextLine().split(",");
+        for (String item : inputItems) {
+            String trimmed = item.trim();
+            boolean found = false;
+            for (int i = 0; i < options.length; i++) {
+                if (trimmed.equalsIgnoreCase(options[i])) {
+                    found = true;
+                    // The label string determines what type of topping to instantiate.
+                    if (label.contains("protein")) {
+                        boolean extra = askExtra ? askExtra(trimmed) : false;
+                        selected.add(new Meat(trimmed, extra));
+                    } else if (label.contains("cheese")) {
+                        boolean extra = askExtra ? askExtra(trimmed) : false;
+                        selected.add(new Cheese(trimmed, extra));
+                    } else {
+                        selected.add(new RegularTopping(trimmed));
+                    }
+                }
+            }
+            if (!found) {
+                System.out.println(ColorTextHelper.colorize("⚠️ '" + trimmed + "' is not a valid option. Skipped.", ColorTextHelper.PINK));
+            }
+        }
+        return selected;
+    }
+
+    private boolean askExtra(String itemName) {
+        System.out.print(ColorTextHelper.colorize("Make " + itemName + " extra? (yes/no): ", ColorTextHelper.LIME));
+        String input = scanner.nextLine().trim().toLowerCase();
+        return input.equals("yes") || input.equals("y");
     }
 }
